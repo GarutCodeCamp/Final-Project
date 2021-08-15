@@ -21,6 +21,8 @@
         "@typescript-eslint"
     ],
     "rules": {
-        "react/no-children-prop": "off"
+        "react/no-children-prop": "off",
+        "no-undef": "off",
+        "@typescript-eslint/explicit-module-boundary-types": "off"
     }
 }

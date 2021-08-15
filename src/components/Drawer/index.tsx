@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useTheme } from "@material-ui/core/styles";
 import useStyles from "./style";
+import { Link } from "react-router-dom";
 import {
   List,
   AppBar,
@@ -18,16 +19,33 @@ import {
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import MenuIcon from "@material-ui/icons/Menu";
-import InboxIcon from "@material-ui/icons/Inbox";
-import MailIcon from "@material-ui/icons/Mail";
+import PlaylistIcon from "@material-ui/icons/PlaylistAdd";
+import HomeIcon from "@material-ui/icons/Home";
+import CollectIcon from "@material-ui/icons/Collections";
 import clsx from "clsx";
-import Profile from "../Profile";
-import Search from "../Search";
+import { Props } from "./interface";
 
-const MiniDrawer = () => {
+const MiniDrawer = ({children, profile, search}: Props) => {
   const theme = useTheme();
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  const listItem = [
+    {
+      text: 'Home',
+      icon: <HomeIcon />,
+      link: '/home' 
+    },
+    {
+      text: 'Create Playlist',
+      icon: <PlaylistIcon />,
+      link: '/create-playlist' 
+    },
+    {
+      text: 'Your Collection',
+      icon: <CollectIcon />,
+      link: '/collection' 
+    }
+  ]
   const handleDrawerOpen = (): void => {
     setOpen(true);
   };
@@ -45,7 +63,7 @@ const MiniDrawer = () => {
         color="secondary"
       >
         <Container>
-          <Toolbar className={classes.items}>
+          <Toolbar>
             <IconButton
               color="inherit"
               aria-label="open drawer"
@@ -60,8 +78,8 @@ const MiniDrawer = () => {
             <Typography variant="h6" noWrap>
               Spotify Web API
             </Typography>
-            <Search />
-            <Profile />
+             {search} 
+             {profile}
           </Toolbar>
         </Container>
       </AppBar>
@@ -89,18 +107,20 @@ const MiniDrawer = () => {
         </div>
         <Divider />
         <List>
-          {["Home", "Search", "Create Playist", "Logout"].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+          {listItem.map((text,index) => (
+            <ListItem button key={index}>
+             <Link className={classes.flat} to={text.link}>
+             <ListItemIcon>
+                {text.icon}
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary={text.text} />
+             </Link>
             </ListItem>
           ))}
         </List>
         <Divider />
         <List>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
+          {["All mail", "Trash", "Spam"].map((text) => (
             <ListItem button key={text}>
               {" "}
                 #
@@ -112,35 +132,7 @@ const MiniDrawer = () => {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <Typography paragraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus
-          dolor purus non enim praesent elementum facilisis leo vel. Risus at
-          ultrices mi tempus imperdiet. Semper risus in hendrerit gravida rutrum
-          quisque non tellus. Convallis convallis tellus id interdum velit
-          laoreet id donec ultrices. Odio morbi quis commodo odio aenean sed
-          adipiscing. Amet nisl suscipit adipiscing bibendum est ultricies
-          integer quis. Cursus euismod quis viverra nibh cras. Metus vulputate
-          eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo
-          quis imperdiet massa tincidunt. Cras tincidunt lobortis feugiat
-          vivamus at augue. At augue eget arcu dictum varius duis at consectetur
-          lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa sapien
-          faucibus et molestie ac.
-        </Typography>
-        <Typography paragraph>
-          Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
-          ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar
-          elementum integer enim neque volutpat ac tincidunt. Ornare suspendisse
-          sed nisi lacus sed viverra tellus. Purus sit amet volutpat consequat
-          mauris. Elementum eu facilisis sed odio morbi. Euismod lacinia at quis
-          risus sed vulputate odio. Morbi tincidunt ornare massa eget egestas
-          purus viverra accumsan in. In hendrerit gravida rutrum quisque non
-          tellus orci ac. Pellentesque nec nam aliquam sem et tortor. Habitant
-          morbi tristique senectus et. Adipiscing elit duis tristique
-          sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
-          eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
-          posuere sollicitudin aliquam ultrices sagittis orci a.
-        </Typography>
+        {children}
       </main>
     </div>
   );

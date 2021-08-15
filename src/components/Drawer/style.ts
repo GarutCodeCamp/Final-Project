@@ -63,9 +63,10 @@ const useStyles = makeStyles((theme: Theme) =>
       flexGrow: 1,
       padding: theme.spacing(3),
     },
-    items: {
-      display: "flex",
-      justifyContent: "space-between"
+    flat: {
+      display: 'flex',
+      textDecoration: 'none',
+      color: '#212121'
     }
   }),
 );

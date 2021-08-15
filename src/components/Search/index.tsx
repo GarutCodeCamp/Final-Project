@@ -8,7 +8,7 @@ const useStyle = makeStyles(() =>
     search: {
       width: "200px",
       display: "flex",
-      flex: 2,
+      flex: 3,
       justifyContent: "center",
     },
     field: {

@@ -1,11 +1,13 @@
 import  React  from 'react';
-import MiniDrawer from './components/Drawer';
+import { Provider } from 'react-redux';
+import store from './redux/store';
+import ListeningOnRoute from './routes';
 
 function App() {
   return (
-    <div className="App">
-     <MiniDrawer  />
-    </div>
+  <Provider store={store}>
+     <ListeningOnRoute />
+  </Provider>      
   );
 }
 
