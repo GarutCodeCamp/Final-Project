@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     textSize: {
       fontSize: 15,
+      color: 'white'
     },
   })
 );

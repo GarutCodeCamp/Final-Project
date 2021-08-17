@@ -1,0 +1,19 @@
+.display_grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+}
+.decoration{
+    text-decoration: none;
+}
+@media screen and (max-width: 992px) {
+    .display_grid{
+    grid-template-columns: 1fr 1fr;
+
+    }
+}
+@media screen and (max-width: 600px){
+    .display_grid{
+        grid-template-columns: 1fr;
+    }
+}

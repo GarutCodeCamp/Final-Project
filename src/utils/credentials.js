@@ -1,6 +1,10 @@
 const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
 const SPOTIFY_AUTHORIZE_URL = "https://accounts.spotify.com/authorize";
-const SCOPE = ["playlist-modify-private", "user-read-email"];
+const SCOPE = [
+  "playlist-modify-private",
+  "playlist-read-private",
+  "user-read-email",
+];
 const LoginSpotify = () => {
   window.location = `${SPOTIFY_AUTHORIZE_URL}?client_id=${CLIENT_ID}&redirect_uri=http://localhost:3000&scope=${SCOPE}&response_type=token&show_dialog=true`;
 };

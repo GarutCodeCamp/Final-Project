@@ -2,6 +2,8 @@ import React from "react";
 import { TextField, Button } from "@material-ui/core";
 import { createStyles, makeStyles } from "@material-ui/styles";
 import SearchIcon from "@material-ui/icons/Search";
+import { Props } from "./interface";
+
 
 const useStyle = makeStyles(() =>
   createStyles({
@@ -14,21 +16,27 @@ const useStyle = makeStyles(() =>
     field: {
       width: "60%",
     },
+    icon: {
+      color: 'white'
+    }
   })
 );
-const Search = () => {
+const Search = ({search, setSearch, handleSearch }: Props) => {
   const style = useStyle();
+  
   return (
     <div className={style.search}>
       <TextField
         className={style.field}
-        id="filled-search"
+        id="search"
         label="Search Song, Albums, Tracks"
         type="search"
         variant="standard"
+        value={search}
+        onChange={(e)=> setSearch(e.target.value)}
       />
-      <Button>
-        <SearchIcon />
+      <Button onClick={handleSearch}>
+        <SearchIcon className={style.icon} />
       </Button>
     </div>
   );

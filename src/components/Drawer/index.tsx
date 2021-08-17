@@ -24,26 +24,32 @@ import HomeIcon from "@material-ui/icons/Home";
 import CollectIcon from "@material-ui/icons/Collections";
 import clsx from "clsx";
 import { Props } from "./interface";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
+import { getCurrentPlaylist } from "../../utils/fetching";
+import { getPlaylist } from "../../redux/PlaylistSlices";
 
-const MiniDrawer = ({children, profile, search}: Props) => {
+const MiniDrawer = ({ children, profile, search }: Props) => {
   const theme = useTheme();
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  const dispatch = useDispatch();
+  const token = useSelector((state: RootState) => state.auth.token);
   const listItem = [
     {
       text: 'Home',
-      icon: <HomeIcon />,
-      link: '/home' 
+      icon: <HomeIcon className={classes.icon} />,
+      link: '/home'
     },
     {
       text: 'Create Playlist',
-      icon: <PlaylistIcon />,
-      link: '/create-playlist' 
+      icon: <PlaylistIcon className={classes.icon} />,
+      link: '/create-playlist'
     },
     {
       text: 'Your Collection',
-      icon: <CollectIcon />,
-      link: '/collection' 
+      icon: <CollectIcon className={classes.icon} />,
+      link: '/collection'
     }
   ]
   const handleDrawerOpen = (): void => {
@@ -52,6 +58,9 @@ const MiniDrawer = ({children, profile, search}: Props) => {
   const handleDrawerClose = (): void => {
     setOpen(false);
   };
+  React.useEffect(() => {
+    getCurrentPlaylist(token).then(data => dispatch(getPlaylist(data.items)))
+  }, [token, dispatch])
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -60,7 +69,6 @@ const MiniDrawer = ({children, profile, search}: Props) => {
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open,
         })}
-        color="secondary"
       >
         <Container>
           <Toolbar>
@@ -78,8 +86,8 @@ const MiniDrawer = ({children, profile, search}: Props) => {
             <Typography variant="h6" noWrap>
               Spotify Web API
             </Typography>
-             {search} 
-             {profile}
+            {search}
+            {profile}
           </Toolbar>
         </Container>
       </AppBar>
@@ -107,28 +115,18 @@ const MiniDrawer = ({children, profile, search}: Props) => {
         </div>
         <Divider />
         <List>
-          {listItem.map((text,index) => (
+          {listItem.map((text, index) => (
             <ListItem button key={index}>
-             <Link className={classes.flat} to={text.link}>
-             <ListItemIcon>
-                {text.icon}
-              </ListItemIcon>
-              <ListItemText primary={text.text} />
-             </Link>
+              <Link className={classes.flat} to={text.link}>
+                <ListItemIcon>
+                  {text.icon}
+                </ListItemIcon>
+                <ListItemText primary={text.text} />
+              </Link>
             </ListItem>
           ))}
         </List>
         <Divider />
-        <List>
-          {["All mail", "Trash", "Spam"].map((text) => (
-            <ListItem button key={text}>
-              {" "}
-                #
-              {" "}
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />

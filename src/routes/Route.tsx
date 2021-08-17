@@ -26,5 +26,11 @@ export const Routes: typeRoute[] = [
         path: "/collection",
         exact: true,
         component: React.lazy(()=> import("../pages/collection"))
+    },
+    {
+        path: "/:id",
+        exact: true,
+        component: React.lazy(()=> import("../pages/detailPlaylist"))
     }
+
 ]

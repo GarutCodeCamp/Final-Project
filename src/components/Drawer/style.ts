@@ -9,6 +9,8 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     appBar: {
       zIndex: theme.zIndex.drawer + 1,
+      background: '#363062',
+      // color: 'white',
       transition: theme.transitions.create(['width', 'margin'], {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen,
@@ -35,12 +37,14 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     drawerOpen: {
       width: drawerWidth,
+      background: '#4D4C7D',
       transition: theme.transitions.create('width', {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.enteringScreen,
       }),
     },
     drawerClose: {
+      background: '#363062',
       transition: theme.transitions.create('width', {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen,
@@ -58,15 +62,21 @@ const useStyles = makeStyles((theme: Theme) =>
       padding: theme.spacing(0, 1),
       // necessary for content to be below app bar
       ...theme.mixins.toolbar,
+
     },
     content: {
       flexGrow: 1,
       padding: theme.spacing(3),
+      background: '#827397',
+      minHeight: '100vh'
     },
     flat: {
       display: 'flex',
       textDecoration: 'none',
-      color: '#212121'
+      color: 'white'
+    },
+    icon:{
+      color: "white"
     }
   }),
 );
