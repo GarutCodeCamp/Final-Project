@@ -1,0 +1,15 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.login {
+    display: grid;
+    background-color: black;
+    height: 100vh;
+    place-items: center;
+  }
+  
+  .login > img {
+    height: 200px;
+  }
+  

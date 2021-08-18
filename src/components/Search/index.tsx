@@ -1,26 +1,9 @@
 import React from "react";
 import { TextField, Button } from "@material-ui/core";
-import { createStyles, makeStyles } from "@material-ui/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import { Props } from "./interface";
+import { useStyle } from "./style";
 
-
-const useStyle = makeStyles(() =>
-  createStyles({
-    search: {
-      width: "200px",
-      display: "flex",
-      flex: 3,
-      justifyContent: "center",
-    },
-    field: {
-      width: "60%",
-    },
-    icon: {
-      color: 'white'
-    }
-  })
-);
 const Search = ({ search, setSearch, handleSearch }: Props) => {
   const style = useStyle();
 

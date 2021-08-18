@@ -1,31 +1,9 @@
 import { Button } from "@material-ui/core";
 import React from "react";
+import { Props } from "./interface";
 import "./index.css";
 
 
-interface Props {
-  track: {
-    album: {
-      images: {
-        [index: number]: {
-          url: string;
-        }
-      };
-      release_date: string;
-    };
-    name: string;
-    artists: {
-      [index: number]: {
-        name: string;
-      };
-    };
-    duration_ms: number;
-    uri: string;
-  }
-  id: string;
-  selectedTracks: Array<string>;
-  setSelectedTracks: (query: string[]) => void;
-}
 
 const RowCard = ({ track, selectedTracks, setSelectedTracks }: Props) => {
   const handleButtonOnselect = (id: string): void => {

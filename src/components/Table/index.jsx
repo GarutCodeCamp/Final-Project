@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 import { Avatar, Button } from "@material-ui/core";
-import style from "../../pages/detailPlaylist/detail.module.css";
+import style from "./table.module.css";
 import { Timelapse } from "@material-ui/icons";
 import { addItemToPlaylist } from "../../utils/fetching";
 const Table = ({ item, track, token, id }) => {

@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { login, User } from "../../redux/AuthSlices";
 import { getCurrentPlaylist, profile } from "../../utils/fetching";
-
+import style from "./login.module.css";
 const Login = () => {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -20,11 +20,15 @@ const Login = () => {
     }
   }, [dispatch, history]);
   return (
-    <>
-      <Button onClick={LoginSpotify} color="primary" variant="outlined">
+    <div className={style.login}>
+      <img
+        src="https://getheavy.com/wp-content/uploads/2019/12/spotify2019-830x350.jpg"
+        alt=""
+      />
+      <Button  onClick={LoginSpotify} color="primary" variant="contained" size="large">
         Login
       </Button>
-    </>
+    </div>
   );
 };
 
