@@ -64,9 +64,13 @@
 }
 
 .music{
-    max-height: 3vh;
+    max-height: 20vh;
     overflow: hidden;
     border: none;
+    transition: 0.2s;
+}
+.music:hover{
+    background: #D8B9C3;
 }
 .setTitle{
     display: flex;
@@ -89,8 +93,8 @@
     padding-top: 20px;
 }
 .titleP{
-    height: 2px;
     color: rgba(255, 255, 255, 0.616);
     line-height: 1px;
     padding-bottom: 30px;
 }
+

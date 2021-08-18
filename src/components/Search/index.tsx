@@ -21,9 +21,9 @@ const useStyle = makeStyles(() =>
     }
   })
 );
-const Search = ({search, setSearch, handleSearch }: Props) => {
+const Search = ({ search, setSearch, handleSearch }: Props) => {
   const style = useStyle();
-  
+
   return (
     <div className={style.search}>
       <TextField
@@ -33,7 +33,7 @@ const Search = ({search, setSearch, handleSearch }: Props) => {
         type="search"
         variant="standard"
         value={search}
-        onChange={(e)=> setSearch(e.target.value)}
+        onChange={(e) => setSearch(e.target.value)}
       />
       <Button onClick={handleSearch}>
         <SearchIcon className={style.icon} />

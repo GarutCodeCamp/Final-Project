@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const Profile = () => {
   const style = useStyles();
-  const user = useSelector((state: RootState)=> state.auth.user)
+  const user = useSelector((state: RootState) => state.auth.user)
   return (
     <Link to="/profile" className={style.profile}>
       <Avatar

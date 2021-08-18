@@ -123,14 +123,13 @@ export interface AuthState {
 export interface PlaylistState {
     tracks: Track[];
     SelectTrack: string[];
-    form: {
-        title: string;
-        description: string;
-    };
     items: currentPlaylist[];
     newRelease: newRelease[]
+    featurePlaylist: featurePlaylist[]
 }
-
+interface featurePlaylist{
+    item: []
+}
 export interface ITracks {
     tracks: Track[];
 }

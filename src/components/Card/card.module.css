@@ -29,10 +29,9 @@
 
 .card_text > h1,p{
     font-size: 1em;
-    line-height: 10px;
+    line-height: 20px;
     text-align: center;
-    color: #121212;
-    
+    color: #121212;    
 }
 @media screen and (max-width: 992px) {
     .card{

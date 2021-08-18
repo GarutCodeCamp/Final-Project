@@ -1,14 +1,14 @@
-import  React  from 'react';
-import { Provider } from 'react-redux';
-import store from './redux/store';
-import ListeningOnRoute from './routes';
+import React from "react";
+import { Provider } from "react-redux";
+import store from "./redux/store";
+import ListeningOnRoute from "./routes";
 
-function App() {
+const App = () => {
   return (
-  <Provider store={store}>
-     <ListeningOnRoute />
-  </Provider>      
+    <Provider store={store}>
+      <ListeningOnRoute />
+    </Provider>
   );
-}
+};
 
 export default App;

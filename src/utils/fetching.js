@@ -76,6 +76,18 @@ const getPlaylist = (token, playlist_id) =>
     },
   }).then((res) => res.json());
 
+const featuredPlaylist = (token) =>
+  fetch(
+    `https://api.spotify.com/v1/browse/featured-playlists?country=SE&limit=9`,
+    {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  ).then((res) => res.json());
 export {
   profile,
   searchTracks,
@@ -84,4 +96,5 @@ export {
   getCurrentPlaylist,
   newRelease,
   getPlaylist,
+  featuredPlaylist,
 };

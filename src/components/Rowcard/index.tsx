@@ -27,19 +27,19 @@ interface Props {
   setSelectedTracks: (query: string[]) => void;
 }
 
-const RowCard = ({ track,  selectedTracks, setSelectedTracks }: Props) => {
+const RowCard = ({ track, selectedTracks, setSelectedTracks }: Props) => {
   const handleButtonOnselect = (id: string): void => {
     const uri: string = id;
-    if(selectedTracks.includes(uri)){
-      const newPlayList : string[] = selectedTracks.filter((track)=>track !== uri)
+    if (selectedTracks.includes(uri)) {
+      const newPlayList: string[] = selectedTracks.filter((track) => track !== uri)
       setSelectedTracks(newPlayList);
-    }else{
+    } else {
       setSelectedTracks([...selectedTracks, uri])
     }
   }
   return (
     <div className="songRow" >
-      <img className="songRow__album" alt="" src={track.album.images[1].url}/>
+      <img className="songRow__album" alt="" src={track.album.images[1].url} />
       <div className="songRow__info">
         <h1>{track.name}</h1>
         <p>
@@ -47,8 +47,8 @@ const RowCard = ({ track,  selectedTracks, setSelectedTracks }: Props) => {
           {track.album.release_date}
         </p>
       </div>
-      <Button className="row__btn" variant="text" onClick={()=> handleButtonOnselect(track?.uri)} size="small" color="primary"  >
-          {selectedTracks.includes(track.uri)? 'Deselect': 'Select'}
+      <Button className="row__btn" variant="text" onClick={() => handleButtonOnselect(track?.uri)} size="small" color="primary"  >
+        {selectedTracks.includes(track.uri) ? 'Deselect' : 'Select'}
       </Button>
     </div>
   )

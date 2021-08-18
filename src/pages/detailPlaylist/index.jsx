@@ -1,26 +1,47 @@
-import { Avatar, Container, Divider, Typography } from "@material-ui/core";
-import { Timelapse } from "@material-ui/icons";
 import React from "react";
+import { Avatar, Container, Divider, Typography } from "@material-ui/core";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router";
 import MiniDrawer from "../../components/Drawer";
 import Profile from "../../components/Profile";
-import { getPlaylist } from "../../utils/fetching";
+import Search from "../../components/Search";
+import { getPlaylist, searchTracks } from "../../utils/fetching";
 import style from "./detail.module.css";
+import { Table } from "../../components/Table";
 
 const DetailPlaylist = () => {
   const [detail, setDetail] = React.useState([]);
+  const [track, setTrack] = React.useState([]);
+  const [search, setSearch] = React.useState("");
   const image = detail.images;
-  const item = detail.tracks?.items
-  console.log(item);
+  const item = detail.tracks?.items;
   const token = useSelector((state) => state.auth.token);
   const { id } = useParams();
+  const handleButton = () => {
+    if (search === "") {
+      alert("can't Empty");
+    } else {
+      searchTracks(search, token).then((data) => {
+        setTrack(data.tracks.items);
+      });
+      setSearch("");
+    }
+  };
   React.useEffect(() => {
     getPlaylist(token, id).then((data) => setDetail(data));
   }, [token]);
   return (
     <>
-      <MiniDrawer profile={<Profile />}>
+      <MiniDrawer
+        search={
+          <Search
+            search={search}
+            setSearch={setSearch}
+            handleSearch={handleButton}
+          />
+        }
+        profile={<Profile />}
+      >
         <Container>
           <div className={style.detail}>
             <div className={style.current_detail}>
@@ -46,36 +67,7 @@ const DetailPlaylist = () => {
               </div>
             </div>
             <Divider />
-            <div className={style.detail_list}>
-              <table className={style.table}>
-                <tr>
-                  <th>#</th>
-                  <th>Title</th>
-                  <th>Album</th>
-                  <th>Date</th>
-                  <th>
-                    <Timelapse />
-                  </th>
-                </tr>
-                {item&&item.map((res,idx) => {
-                  return (
-                    <tr key={res.id} className={style.music}>
-                      <td>{idx}</td>
-                      <td className={style.setTitle}>
-                        <Avatar src={res.track?.album?.images?.[0].url} variant="square" />
-                        <div className={style.textTitle}>
-                          <h5 className={style.titleH5}>{res.track.name}</h5>
-                          <p className={style.titleP}>{res.track.artists?.[0].name}</p>
-                        </div>
-                      </td>
-                      <td>{res.track.album.name}</td>
-                      <td>{res.added_at}</td>
-                      <td>4:00</td>
-                    </tr>
-                  );
-                })}              
-              </table>
-            </div>
+            <Table item={item} id={id} token={token} track={track} />
           </div>
         </Container>
       </MiniDrawer>
