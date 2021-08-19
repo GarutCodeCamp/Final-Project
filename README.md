@@ -45,3 +45,30 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 # Final-Project
+
+
+
+<!--  -->
+## ## ## ## ##
+-get profile and name
+-search track and create playlist
+-ts/tsx
+-css grid and flex
+-redux and store
+- react hook
+-detail playlist
+-list in the playlist
+-new release in home page
+-eslint 
+
+## open folder
+-yarn install
+-yarn start
+
+kalau ingin mencoba spotify ini harus menggunakan client id masing masing dengan email yang sama di spotifyfordeveloper
+
+## bugs
+kalau di localhost UI nya lancar pas di deploy UI nya gak sesuai
+
+## link 
+https://final-project-ahmad-junaedi.netlify.app/

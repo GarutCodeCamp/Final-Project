@@ -73,10 +73,10 @@ const useStyles = makeStyles((theme: Theme) =>
     flat: {
       display: 'flex',
       textDecoration: 'none',
-      color: 'white'
+      color: 'black'
     },
     icon:{
-      color: "white"
+      color: "black"
     }
   }),
 );
