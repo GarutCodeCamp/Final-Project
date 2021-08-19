@@ -7,7 +7,7 @@ const SCOPE = [
   "user-read-private",
 ];
 const LoginSpotify = () => {
-  window.location = `${SPOTIFY_AUTHORIZE_URL}?client_id=${CLIENT_ID}&redirect_uri=https://final-project-ahmad-junaedi.netlify.app&scope=${SCOPE}&response_type=token&show_dialog=true`;
+  window.location = `${SPOTIFY_AUTHORIZE_URL}?client_id=${CLIENT_ID}&redirect_uri=https://final-project-ahmad-junaedi.netlify.app/&scope=${SCOPE}&response_type=token&show_dialog=true`;
 };
 
 const AccessToken = (hash) => {
