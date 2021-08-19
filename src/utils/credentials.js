@@ -4,6 +4,7 @@ const SCOPE = [
   "playlist-modify-private",
   "playlist-read-private",
   "user-read-email",
+  "user-read-private",
 ];
 const LoginSpotify = () => {
   window.location = `${SPOTIFY_AUTHORIZE_URL}?client_id=${CLIENT_ID}&redirect_uri=http://localhost:3000&scope=${SCOPE}&response_type=token&show_dialog=true`;

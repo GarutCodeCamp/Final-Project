@@ -6,7 +6,7 @@ import ListeningOnRoute from "./routes";
 const App = () => {
   return (
     <Provider store={store}>
-      <ListeningOnRoute />
+      <ListeningOnRoute aria-labelledby="route" />
     </Provider>
   );
 };

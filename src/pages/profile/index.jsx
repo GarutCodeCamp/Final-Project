@@ -26,15 +26,15 @@ const ProfilePage = () => {
           <Avatar className={style.large} src={user?.images[0].url} />
           <Divider />
           <Grid item xs={12}>
-            <Typography variant="h5">{user?.display_name}</Typography>
-            <Typography className={style.textLeft} paragraph>
-              Country: {user.country}
+            <Typography data-testid="user-name"  variant="h5">{user?.display_name}</Typography>
+            <Typography data-testid="user-country" className={style.textLeft} paragraph>
+              Country: {user?.country}
             </Typography>
-            <Typography className={style.textLeft} paragraph>
-              Email: {user.email}
+            <Typography data-testid="user-email" className={style.textLeft} paragraph>
+              Email: {user?.email}
             </Typography>
-            <Typography className={style.textLeft} paragraph>
-              Folowers: {user.followers.total}
+            <Typography data-testid="user-followers" className={style.textLeft} paragraph>
+              Folowers: {user?.followers.total}
             </Typography>
             <Button
               variant="contained"
