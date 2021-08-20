@@ -72,3 +72,6 @@ kalau di localhost UI nya lancar pas di deploy UI nya gak sesuai
 
 ## link 
 https://final-project-ahmad-junaedi.netlify.app/
+
+email: akuncode391@gmail.com   
+pwd: admin123
