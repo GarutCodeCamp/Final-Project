@@ -5,6 +5,7 @@ import  Card  from "../../components/Card/index";
 import MiniDrawer from "../../components/Drawer";
 import Profile from "../../components/Profile";
 import style from "./collect.module.css";
+
 const Collection = () => {
   const playlist = useSelector((state) => state.playlist.items);
   return (

@@ -37,17 +37,17 @@ const MiniDrawer = ({ children, profile, search }: Props) => {
   const token = useSelector((state: RootState) => state.auth.token);
   const listItem = [
     {
-      text: 'Home',
+      name: 'Home',
       icon: <HomeIcon className={classes.icon} />,
       link: '/home'
     },
     {
-      text: 'Create Playlist',
+      name: 'Create Playlist',
       icon: <PlaylistIcon className={classes.icon} />,
       link: '/create-playlist'
     },
     {
-      text: 'Your Collection',
+      name: 'Your Collection',
       icon: <CollectIcon className={classes.icon} />,
       link: '/collection'
     }
@@ -115,13 +115,13 @@ const MiniDrawer = ({ children, profile, search }: Props) => {
         </div>
         <Divider />
         <List>
-          {listItem.map((text, index) => (
+          {listItem.map((item, index) => (
             <ListItem button key={index}>
-              <Link className={classes.flat} to={text.link}>
+              <Link className={classes.flat} to={item.link}>
                 <ListItemIcon>
-                  {text.icon}
+                  {item.icon}
                 </ListItemIcon>
-                <ListItemText primary={text.text} />
+                <ListItemText primary={item.name} />
               </Link>
             </ListItem>
           ))}

@@ -3,8 +3,6 @@ import React from "react";
 import { Props } from "./interface";
 import "./index.css";
 
-
-
 const RowCard = ({ track, selectedTracks, setSelectedTracks }: Props) => {
   const handleButtonOnselect = (id: string): void => {
     const uri: string = id;

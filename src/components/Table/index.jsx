@@ -4,6 +4,7 @@ import { Avatar, Button } from "@material-ui/core";
 import style from "./table.module.css";
 import { Timelapse } from "@material-ui/icons";
 import { addItemToPlaylist } from "../../utils/fetching";
+
 const Table = ({ item, track, token, id }) => {
   const addItem = (uri) => {
     addItemToPlaylist(id, token, uri);
